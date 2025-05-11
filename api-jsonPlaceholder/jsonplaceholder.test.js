@@ -1,7 +1,7 @@
 const axios = require("axios").default;
 
 describe("Get requests", () => {
-  test("Get all comments to second post [/posts/2/comments] and verify postId in all comments", async () => {
+  test("Get all comments to second post and verify postId in all comments [/posts/2/comments]", async () => {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/posts/2/comments"
     );
@@ -12,7 +12,7 @@ describe("Get requests", () => {
     });
   });
 
-  test("Get all posts for first user [/users/1/posts] and verify the number", async () => {
+  test("Get all posts for first user and verify the number [/users/1/posts]", async () => {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/users/1/posts"
     );
@@ -21,7 +21,7 @@ describe("Get requests", () => {
     expect(responseBody).toHaveLength(10);
   });
 
-  test("Get all info about last post [/posts/100] and verify userId, id, title, body", async () => {
+  test("Get all info about last post and verify userId, id, title, body [/posts/100]", async () => {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/posts/100"
     );
@@ -35,7 +35,7 @@ describe("Get requests", () => {
 });
 
 describe("Post requests", () => {
-  test("Create new todo for tenth user [/users/10/todos] and verify the response is successful", async () => {
+  test("Create new todo for tenth user and verify the response is successful [/users/10/todos]", async () => {
     const newTodo = {
       title: "Test todo",
       completed: true,
@@ -53,7 +53,7 @@ describe("Post requests", () => {
     expect(responseBody.completed).toEqual(newTodo.completed);
   });
 
-  test("Create new album [/albums] and verify the response is successful", async () => {
+  test("Create new album and verify the response is successful [/albums]", async () => {
     const newAlbum = {
       userId: "10",
       title: "Test todo",
