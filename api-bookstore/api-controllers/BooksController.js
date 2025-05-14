@@ -37,28 +37,23 @@ class BooksController extends BaseController {
   }
 
   async removeBook(userId, token, isbn) {
-    return await this.axiosInstance.delete(
-      `/BookStore/v1/Book`,
-      {
-        data: {
-          isbn: isbn,
-          userId: userId,
-        },
+    return await this.axiosInstance.delete(`/BookStore/v1/Book`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+      data: {
+        isbn: isbn,
+        userId: userId,
+      },
+    });
   }
 
   async updateBook(userId, token, currentIsbn, newIsbn) {
     return await this.axiosInstance.put(
       `/BookStore/v1/Books/${currentIsbn}`,
       {
-        isbn: newIsbn,
         userId: userId,
+        isbn: newIsbn,
       },
       {
         headers: {
